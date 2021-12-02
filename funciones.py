@@ -68,3 +68,32 @@ def approx_eigval_min(matriz_covarianza,max_iters,eigen_val_1,eigen_vec_1):
         eigen_val=eigen_vec.T@matriz_covarianza@eigen_vec
         k=k+1
     return eigen_val,eigen_vec,matriz_covarianza
+
+def lectura_graficas(archivo_csv):
+    datos=pd.read_csv(archivo_csv)
+    return datos
+
+def normalizar(dataframe):
+    medias = dataframe.mean(axis = 0)
+    desv = dataframe.std(axis = 0)
+    datos_norm = (dataframe - medias) / desv
+    return datos_norm
+
+def graficas_sin_normalizar(datos):
+    for i in datos.columns:
+        plt.plot(datos[i], label=str(i))
+    plt.legend(loc="lower center", bbox_to_anchor=(1.15, 0.35))
+    plt.title("Indices sin normalizar")
+    plt.xlabel("Observación")
+    plt.ylabel("Cotización en bolsa (USD)")
+    plt.show()
+    
+def graficas_normalizadas(datos):
+    datos_norm=normalizar(datos)
+    for i in datos_norm.columns:
+        plt.plot(datos_norm[i], label=str(i))
+    plt.legend(loc="lower center", bbox_to_anchor=(1.15, 0.35))
+    plt.title("Indices normalizados")
+    plt.xlabel("Observación")
+    plt.ylabel("Cotización en bolsa (USD)")
+    plt.show()
