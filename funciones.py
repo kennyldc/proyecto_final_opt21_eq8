@@ -38,3 +38,33 @@ def approx_eigval_max(matriz_covarianza,max_iters):
         
         k=k+1 
     return eigen_val,eigen_vec,matriz_covarianza
+
+#Método de Deflation
+def approx_eigval_min(matriz_covarianza,max_iters,eigen_val_1,eigen_vec_1):
+    z_k_minus_1=[]
+    eigen_val_ant=1
+    eigen_val=0
+    k=0
+    #Se crea una lista que contenga el número de columnas = al número de renglones de la matriz
+    #de covarianzas -1 y al final se agrega un uno para seguir el algoritmo de la potencia
+    for i in range(len(matriz_covarianza)):
+        if i+1==len(matriz_covarianza):
+            z_k_minus_1.append(1)
+        else: 
+            z_k_minus_1.append(0)
+    #Para el método de deflaition se elimina el primer eigenvalor de la matriz y la resultante
+    # es una matriz que contine los eigenvalores {0,l2,l3...}
+    x1=np.array([[eigen_vec_1[0]],[eigen_vec_1[1]],[eigen_vec_1[2]],[eigen_vec_1[3]],[eigen_vec_1[4]]])
+    u1=eigen_val_1*x1
+    matriz_covarianza=matriz_covarianza-x1@u1.T
+    #Se genera un nuevo ciclo para calcular el segundo eigenvalor a partir del método potencia
+    while (k <=max_iters) and (abs(Decimal(eigen_val)-Decimal(eigen_val_ant))>=1e-4):
+        eigen_val_ant=eigen_val
+        z_k=matriz_covarianza@z_k_minus_1
+        #Se normaliza el vector utilizando la norma cuadrada
+        eigen_vec=z_k/np.linalg.norm(z_k)
+        z_k_minus_1=eigen_vec
+        #Se genera el eigen valor utilizando el vector resultante y la matriz original
+        eigen_val=eigen_vec.T@matriz_covarianza@eigen_vec
+        k=k+1
+    return eigen_val,eigen_vec,matriz_covarianza
