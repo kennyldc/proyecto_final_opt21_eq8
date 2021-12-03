@@ -104,7 +104,7 @@ def componente(sigma,eigen_val,acumulado):
     acumulado=0
     componente_necesario=0
     while (j in range(len(sigma)) and acumulado<=.80):
-        acumulado=acumulado+eig_val[j]/Acumulada
+        acumulado=acumulado+eigen_val[j]/Acumulada
         componente_necesario=j+1
         j+=1
     return acumulado, componente_necesario
