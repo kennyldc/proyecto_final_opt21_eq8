@@ -97,7 +97,17 @@ def graficas_normalizadas(datos):
     plt.xlabel("Observación")
     plt.ylabel("Cotización en bolsa (USD)")
     plt.show()
-
+def graficas_PCA(datos):
+    for i in datos_norm.columns:
+        if (i=="PCA"):
+            plt.plot(datos_norm[i], label=str(i),'r+')
+        else:
+            plt.plot(datos_norm[i], label=str(i))
+    plt.legend(loc="lower center", bbox_to_anchor=(1.15, 0.35))
+    plt.title("Indices con PCA")
+    plt.xlabel("Observación")
+    plt.ylabel("Cotización en bolsa (USD)")
+    plt.show()
 def componente(sigma,eigen_val,acumulado):
     j=0
     Acumulada=eigen_val.sum()
