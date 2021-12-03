@@ -11,6 +11,8 @@ Para la realización de este proyecto se hizo uso de los servicios en la nube de
 - Storage. Size (GiB): 8
 - Security Group. Se creo SG propio con Source: My IP, y se habilitó el puerto 8888 para el uso de la imagen de Docker.
 
+Más información sobre la configuración de AWS disponible en la siguente [liga](https://github.com/ITAM-DS/analisis-numerico-computo-cientifico/wiki/1.2.Instalaci%C3%B3n-de-herramientas-%C3%BAtiles-en-AWS).
+
 
 ## Docker
 
