@@ -10,3 +10,15 @@ Para la realización de este proyecto se hizo uso de los servicios en la nube de
 - Advance Details. User data: Se instalan docker en la instancia.
 - Storage. Size (GiB): 8
 - Security Group. Se creo SG propio con Source: My IP, y se habilitó el puerto 8888 para el uso de la imagen de Docker.
+
+
+## Docker
+
+Para poder reproducir el contenido de este repositorio se recomienda el uso de la siguiente imagen usando los siguientes comandos.
+
+```
+docker run --rm -v <ruta a mi directorio>:/datos --name jupyterlab_optimizacion -p 8888:8888 -d palmoreck/jupyterlab_optimizacion:3.1.0
+
+```
+
+La información sobre la imagen se encuentra aquí. [palmoreck/jupyterlab_optimizacion:3.1.0](https://github.com/palmoreck/dockerfiles/blob/master/jupyterlab/optimizacion/3.1.0/Dockerfile)
