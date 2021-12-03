@@ -108,7 +108,7 @@ def graficas_PCA(datos):
     plt.xlabel("Observación")
     plt.ylabel("Cotización en bolsa (USD)")
     plt.show()
-def componente(sigma,eigen_val,acumulado):
+def componente(sigma,eigen_val):
     j=0
     Acumulada=eigen_val.sum()
     acumulado=0
